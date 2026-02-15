@@ -11,6 +11,7 @@ FROM docker.io/louislam/uptime-kuma:2 as KUMA
 ARG UPTIME_KUMA_PORT=3001
 WORKDIR /app
 RUN mkdir -p /app/data
+COPY db-config.json /app/data/db-config.json
 
 COPY --from=BUILDER /litestream /usr/local/bin/litestream
 COPY litestream.yml /etc/litestream.yml
